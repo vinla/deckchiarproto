@@ -128,10 +128,7 @@ namespace DeckChair
         {            
             var thumb = sender as Thumb;
             var thumbPosition = (ThumbPosition)thumb.Tag;
-            var adornedElement = AdornedElement as FrameworkElement;
-            var parentElement = adornedElement as FrameworkElement;
-
-            EnforceSize(adornedElement);
+            var adornedElement = (AdornedElement as FrameworkElement).DataContext as Design.CardElement;                       
 
             if (thumbPosition == ThumbPosition.Right || thumbPosition == ThumbPosition.BottomRight || thumbPosition == ThumbPosition.TopRight)
             {
@@ -146,29 +143,25 @@ namespace DeckChair
 
             if(thumbPosition == ThumbPosition.Left || thumbPosition == ThumbPosition.BottomLeft || thumbPosition == ThumbPosition.TopLeft)
             {
-                double currentWidth = adornedElement.Width;
                 double newWidth = Math.Max(adornedElement.Width - args.HorizontalChange, 1);
-                double currentLeft = Canvas.GetLeft(adornedElement);
-                adornedElement.Width = newWidth;
-                Canvas.SetLeft(adornedElement, currentLeft - (newWidth - currentWidth));
+
+                adornedElement.Left = adornedElement.Left - (newWidth - adornedElement.Width);
+                adornedElement.Width = newWidth;                
             }
 
             if(thumbPosition == ThumbPosition.Top || thumbPosition == ThumbPosition.TopLeft || thumbPosition == ThumbPosition.TopRight)
             {
-                double currentHeight = adornedElement.Height;
+                
                 double newHeight = Math.Max(adornedElement.Height - args.VerticalChange, 1);
-                double currentTop = Canvas.GetTop(adornedElement);
-                adornedElement.Height = newHeight;
-                Canvas.SetTop(adornedElement, currentTop - (newHeight- currentHeight));
+
+                adornedElement.Top = adornedElement.Top - (newHeight - adornedElement.Height);
+                adornedElement.Height = newHeight;                
             }
 
             if (thumbPosition == ThumbPosition.Center)
-            {
-                double currentTop = Canvas.GetTop(adornedElement);
-                Canvas.SetTop(adornedElement, currentTop + args.VerticalChange);
-
-                double currentLeft = Canvas.GetLeft(adornedElement);
-                Canvas.SetLeft(adornedElement, currentLeft + args.HorizontalChange);
+            {                
+                adornedElement.Top = adornedElement.Top + args.VerticalChange;                
+                adornedElement.Left = adornedElement.Left + args.HorizontalChange;
             }
         }
 

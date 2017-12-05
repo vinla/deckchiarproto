@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:des="clr-namespace:DeckChair.Design"
         xmlns:local="clr-namespace:DeckChair"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
@@ -15,13 +16,38 @@
             <Button DockPanel.Dock="Top" Margin="5" Width="75" Height="30">Add</Button>
         </DockPanel>
         <Border Grid.Column="1" BorderBrush="Black" BorderThickness="2" CornerRadius="5" Background="LightSteelBlue">
-            
+            <ItemsControl ItemsSource="{Binding Elements}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas MouseLeftButtonDown="CanvasClick" Background="Transparent"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemContainerStyle>
+                    <Style TargetType="ContentPresenter">
+                        <Setter Property="Canvas.Top" Value="{Binding Top}"/>
+                        <Setter Property="Canvas.Left" Value="{Binding Left}"/>
+                        <Setter Property="Width" Value="{Binding Width}"/>
+                        <Setter Property="Height" Value="{Binding Height}"/>
+                        <Setter Property="Canvas.ZIndex" Value="{Binding ZIndex}"/>
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+                <ItemsControl.Resources>
+                    <DataTemplate DataType="{x:Type des:TextElement}">
+                        <Grid Width="{Binding Width}" Height="{Binding Height}" Background="Transparent" MouseLeftButtonDown="ItemMouseClick">
+                            <Rectangle Fill="Transparent" StrokeDashArray="4,4" Stroke="Black" IsHitTestVisible="False"/>
+                            <TextBlock Margin="2" Text="{Binding Text}" IsHitTestVisible="False"/>
+                        </Grid>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type des:RectangleElement}">
+                        <Rectangle Width="{Binding Width}" Height="{Binding Height}"
+                            Fill="{Binding Background}" Stroke="{Binding Border}" StrokeThickness="{Binding BorderWidth}" MouseLeftButtonUp="ItemMouseClick"/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type des:EllipseElement}">
+                        <Ellipse Width="{Binding Width}" Height="{Binding Height}"
+                                   Fill="{Binding Background}" Stroke="{Binding Border}" StrokeThickness="{Binding BorderWidth}" MouseLeftButtonUp="ItemMouseClick"/>
+                    </DataTemplate>
+                </ItemsControl.Resources>
+            </ItemsControl>
         </Border>
-        <Canvas Grid.Column="1" MouseLeftButtonDown="CanvasClick" Background="Transparent">
-            <Rectangle Fill="Transparent" Stroke="Black" StrokeDashArray="4,4" Width="100" Height="100" MouseLeftButtonDown="ItemMouseClick"
-                Canvas.Top="13" Canvas.Left="10" MouseEnter="ItemMouseEnter" MouseLeave="ItemMouseLeave"/>
-            <Rectangle Fill="Gray" Width="100" Height="100" MouseLeftButtonDown="ItemMouseClick"
-                Canvas.Top="130" Canvas.Left="10" MouseEnter="ItemMouseEnter" MouseLeave="ItemMouseLeave"/>
-        </Canvas>
     </Grid>
 </Window>

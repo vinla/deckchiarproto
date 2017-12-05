@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DeckChair
+namespace DeckChair.Design
 {
-    public class ViewModel
+    public class RectangleElement : ShapeElement
     {
 
     }

@@ -27,6 +27,7 @@ namespace DeckChair
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new CardTemplateViewModel();
         }
 
         private void ItemMouseEnter(object sender, MouseEventArgs e)

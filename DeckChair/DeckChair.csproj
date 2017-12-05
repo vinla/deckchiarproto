@@ -54,10 +54,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CardTemplateViewModel.cs" />
+    <Compile Include="Design\CardElement.cs" />
+    <Compile Include="Design\EllipseElement.cs" />
+    <Compile Include="Design\RectangleElement.cs" />
+    <Compile Include="Design\ShapeElement.cs" />
+    <Compile Include="Design\TextElement.cs" />
     <Compile Include="HighlightAdorner.cs" />
+    <Compile Include="Mvvm\ViewModel.cs" />
     <Compile Include="ResizeAdorner.cs" />
     <Compile Include="ThumbPosition.cs" />
-    <Compile Include="ViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
