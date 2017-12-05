@@ -55,6 +55,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CardTemplateViewModel.cs" />
+    <Compile Include="Controls\DesignCanvas.xaml.cs">
+      <DependentUpon>DesignCanvas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Design\CardElement.cs" />
     <Compile Include="Design\EllipseElement.cs" />
     <Compile Include="Design\RectangleElement.cs" />
@@ -64,6 +67,10 @@
     <Compile Include="Mvvm\ViewModel.cs" />
     <Compile Include="ResizeAdorner.cs" />
     <Compile Include="ThumbPosition.cs" />
+    <Page Include="Controls\DesignCanvas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -7,7 +7,7 @@ using System.Windows.Media;
 
 namespace DeckChair
 {
-    public class CardTemplateViewModel
+    public class CardTemplateViewModel : Mvvm.ViewModel
     {
         private readonly List<Design.CardElement> _elements;
 
@@ -57,5 +57,11 @@ namespace DeckChair
         }
 
         public IEnumerable<Design.CardElement> Elements => _elements;        
+
+        public Design.CardElement SelectedElement
+        {
+            get { return GetValue<Design.CardElement>(nameof(SelectedElement)); }
+            set { SetValue(nameof(SelectedElement), value); }
+        }
     }
 }

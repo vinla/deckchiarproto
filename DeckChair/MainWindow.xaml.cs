@@ -20,52 +20,10 @@ namespace DeckChair
     /// </summary>
     public partial class MainWindow : Window
     {
-        private HighlightAdorner _adorner;
-        private ResizeAdorner _resizeAdorner;
-        private FrameworkElement _selection;
-
         public MainWindow()
         {
             InitializeComponent();
             DataContext = new CardTemplateViewModel();
-        }
-
-        private void ItemMouseEnter(object sender, MouseEventArgs e)
-        {
-            var item = sender as FrameworkElement;
-            _adorner = new HighlightAdorner(item);
-            AdornerLayer.GetAdornerLayer(item).Add(_adorner);
-        }
-
-        private void ItemMouseLeave(object sender, MouseEventArgs e)
-        {
-            var item = sender as FrameworkElement;
-            AdornerLayer.GetAdornerLayer(item).Remove(_adorner);
-        }
-
-        private void SelectItem(FrameworkElement element)
-        {
-            Deselect();
-            _resizeAdorner = new ResizeAdorner(element);
-            AdornerLayer.GetAdornerLayer(element).Add(_resizeAdorner);
-            _selection = element;
-        }
-
-        private void Deselect()
-        {
-            if (_selection != null)
-                AdornerLayer.GetAdornerLayer(_selection).Remove(_resizeAdorner);
-        }
-
-        private void ItemMouseClick(object sender, MouseButtonEventArgs e)
-        {
-            SelectItem(sender as FrameworkElement);
-        }
-
-        private void CanvasClick(object sender, MouseButtonEventArgs e)
-        {
-            if(sender == e.OriginalSource)
-                Deselect();
-        }
+        }        
     }
 }
