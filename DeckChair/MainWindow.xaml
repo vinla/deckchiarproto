@@ -7,15 +7,9 @@
         xmlns:local="clr-namespace:DeckChair"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="250"/>
-        </Grid.ColumnDefinitions>
-        <DockPanel LastChildFill="False">
-            <Button DockPanel.Dock="Top" Margin="5" Width="75" Height="30">Add</Button>
-            <ContentControl Content="{Binding SelectedElement}"/>
-        </DockPanel>
-        <c:DesignCanvas Grid.Column="1" Elements="{Binding Elements}" SelectedElement="{Binding SelectedElement, Mode=TwoWay}"/>
-    </Grid>
+    <TabControl>
+        <TabItem Header="Card Types">
+            <ContentPresenter Content="{Binding CardTypes}"/>
+        </TabItem>
+    </TabControl>
 </Window>

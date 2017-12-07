@@ -13,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DeckChair
+namespace DeckChair.Views.CardTypes
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for CardTypesIndex.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CardTypesIndex : UserControl
     {
-        public MainWindow()
+        public CardTypesIndex()
         {
             InitializeComponent();
-            DataContext = new ViewModels.ApplicationViewModel();
-        }        
+        }
     }
 }

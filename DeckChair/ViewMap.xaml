@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vmct="clr-namespace:DeckChair.ViewModels.CardTypes"
+                    xmlns:vct="clr-namespace:DeckChair.Views.CardTypes"
+                    xmlns:local="clr-namespace:DeckChair">
+    <DataTemplate DataType="{x:Type vmct:IndexViewModel}">
+        <vct:CardTypesIndex/>
+    </DataTemplate>
+</ResourceDictionary>
